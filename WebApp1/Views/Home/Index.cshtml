@@ -1,8 +1,71 @@
-﻿@{
+﻿@*@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>*@
+
+@model WebApp1.Models.LoginViewModel
+@{
+    ViewData["Title"] = "Login";
+    Layout = null;
+}
+
+<head>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link href="~/css/custom.css" rel="stylesheet" />
+</head>
+
+<div class="sidenav">
+    <div class="login-main-text">
+        <h2>Welcome User !
+        <p>Login or register from here to access.</p>
+    </div>
 </div>
+
+<div class="main">
+    <div class="col-md-6 col-sm-12">
+        <div class="login-form">
+            <form class="form-signin" id="account" method="post">
+                <h4 class="form-signin-heading" style="color:dimgrey">Please Login</h4>
+                @*<div asp-validation-summary="All" class="text-danger"></div>*@
+                <div class="form-group">
+                    <input asp-for="Email" class="form-control" placeholder="Enter login email" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input asp-for="Password" class="form-control" placeholder="Enter login password" type="password" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                @*<div class="form-group">
+            <div class="checkbox">
+                <label asp-for="RememberMe">
+                    <input asp-for="RememberMe" />
+                    @Html.DisplayNameFor(m => m.RememberMe)
+                </label>
+            </div>
+        </div>*@
+                <div class="form-group">
+                    <button type="submit" class="btn btn-lg btn-secondary btn-block">Login</button>
+                </div>
+                <div class="form-group">
+                    <p>
+                        <a asp-action="Index" asp-controller="Home">Forgot your password?</a>
+                    </p>
+                    <p>
+                        First time user? <a asp-action="Index" asp-controller="Home">Register here.</a>
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
